@@ -20,8 +20,10 @@ var/
 .installed.cfg
 *.egg
 
+
 # Environment variables
 .env
+venv/
 
 # IDE
 .idea/

@@ -4,211 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EL Bot - AI Assistant</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: #f5f5f5;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        :root {
-            --chatbot-chat-widget-bg-color: #ffffff;
-            --chatbot-chat-widget-user-message-bg-color: #007bff;
-            --chatbot-chat-widget-bot-message-bg-color: #f8f9fa;
-        }
-
-        .chat-button {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: var(--chatbot-chat-widget-user-message-bg-color);
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .chat-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .chat-button:active {
-            transform: scale(0.95);
-        }
-
-        .chat-button i {
-            transition: transform 0.3s ease;
-        }
-
-        .chat-button:hover i {
-            transform: scale(1.1);
-        }
-        .chat-container {
-            max-width: 400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            transform: translateY(100%);
-            transition: transform 0.3s;
-        }
-        .chat-header {
-            padding: 20px;
-            background: #007bff;
-            color: white;
-            border-radius: 10px 10px 0 0;
-            text-align: center;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .header-text {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .chat-messages {
-            flex-grow: 1;
-            padding: 20px;
-            overflow-y: auto;
-            max-height: 60vh;
-        }
-        .message {
-            margin-bottom: 15px;
-            padding: 10px 15px;
-            border-radius: 15px;
-            max-width: 80%;
-            display: flex;
-            align-items: center;
-        }
-        .user-message {
-            background: #007bff;
-            color: white;
-            margin-left: auto;
-        }
-        .bot-message {
-            background: #e9ecef;
-            color: black;
-        }
-        .chat-input-container {
-            padding: 20px;
-            border-top: 1px solid #dee2e6;
-            display: flex;
-            gap: 10px;
-        }
-        .chat-input {
-            flex-grow: 1;
-            padding: 10px;
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        .chat-send-btn {
-            padding: 10px 20px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .chat-send-btn:hover {
-            background: #0056b3;
-        }
-        .typing-indicator {
-            display: none;
-            padding: 10px;
-            text-align: center;
-            color: #6c757d;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .typing-indicator span {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: #6c757d;
-            animation: typing 1s infinite;
-        }
-        @keyframes typing {
-            0% {
-                transform: scale(0);
-            }
-            50% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(0);
-            }
-        }
-        .chat-options {
-            padding: 20px;
-            border-top: 1px solid #dee2e6;
-            display: flex;
-            gap: 10px;
-        }
-        .chat-option-button {
-            padding: 10px 20px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-            position: relative;
-        }
-        .chat-option-button:hover {
-            background: #0056b3;
-        }
-        .option-tooltip {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #007bff;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 14px;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .chat-option-button:hover .option-tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
-        .hidden {
-            display: none;
-        }
-        .visible {
-            display: block;
-        }
-    </style>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
 </head>
 <body>
+    <!-- Chat Button -->
     <button class="chat-button" onclick="toggleChat()" id="chat-toggle-btn">
         <i class="fas fa-comment-dots"></i>
     </button>
 
+    <!-- Chat Container -->
     <div class="chat-container hidden" id="chat-container">
         <div class="chat-header">
             <div class="header-text">
@@ -222,27 +32,21 @@
         
         <div class="chat-messages" id="chat-messages"></div>
         
-        <div class="typing-indicator" id="typing-indicator">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
         <div class="chat-options">
-            <button class="chat-option-button" onclick="sendQuickMessage('Tell me about the benefits')">
-                <i class="fas fa-rocket"></i> Benefits
+            <button class="chat-option-button" onclick="sendQuickMessage('Tell me about the benefits')" data-tooltip="Benefits">
+                <i class="fas fa-rocket"></i>
             </button>
-            <button class="chat-option-button" onclick="sendQuickMessage('Tell me about your experience')">
-                <i class="fas fa-user-alt"></i> Experience
+            <button class="chat-option-button" onclick="sendQuickMessage('Tell me about your experience')" data-tooltip="Experience">
+                <i class="fas fa-user-alt"></i>
             </button>
-            <button class="chat-option-button" onclick="sendQuickMessage('What are your skills?')">
-                <i class="fas fa-cogs"></i> Skills
+            <button class="chat-option-button" onclick="sendQuickMessage('What are your skills?')" data-tooltip="Skills">
+                <i class="fas fa-cogs"></i>
             </button>
-            <button class="chat-option-button" onclick="sendQuickMessage('Show me your projects')">
-                <i class="fas fa-code"></i> Projects
+            <button class="chat-option-button" onclick="sendQuickMessage('Show me your projects')" data-tooltip="Projects">
+                <i class="fas fa-folder-open"></i>
             </button>
-            <button class="chat-option-button" onclick="sendQuickMessage('How can I contact you?')">
-                <i class="fas fa-envelope"></i> Contact
+            <button class="chat-option-button" onclick="sendQuickMessage('How can I contact you?')" data-tooltip="Contact">
+                <i class="fas fa-envelope"></i>
             </button>
         </div>
         
@@ -253,129 +57,12 @@
                 <i class="fas fa-paper-plane"></i>
             </button>
         </div>
+        
+        <div class="typing-indicator" id="typing-indicator" style="display: none;">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
-
-    <script>
-        const chatMessages = document.getElementById('chat-messages');
-        const userInput = document.getElementById('user-input');
-        const typingIndicator = document.getElementById('typing-indicator');
-        const chatContainer = document.getElementById('chat-container');
-        const chatToggleBtn = document.getElementById('chat-toggle-btn');
-        let currentThreadId = null;
-        let isTyping = false;
-
-        // Almacenar el thread ID en localStorage
-        function getStoredThreadId() {
-            return localStorage.getItem('chatThreadId');
-        }
-
-        function setStoredThreadId(threadId) {
-            localStorage.setItem('chatThreadId', threadId);
-            currentThreadId = threadId;
-        }
-
-        // Inicializar el thread ID desde localStorage o crear uno nuevo
-        window.addEventListener('load', () => {
-            currentThreadId = getStoredThreadId();
-            setTimeout(() => {
-                addMessage('👋 Hello! I\'m EL Bot, your AI assistant. How can I help you today?', 'bot');
-            }, 500);
-        });
-
-        userInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && !isTyping) {
-                sendMessage();
-            }
-        });
-
-        function showTypingIndicator() {
-            typingIndicator.style.display = 'flex';
-            isTyping = true;
-        }
-
-        function hideTypingIndicator() {
-            typingIndicator.style.display = 'none';
-            isTyping = false;
-        }
-
-        function toggleChat() {
-            chatContainer.classList.toggle('hidden');
-            chatContainer.classList.toggle('visible');
-            
-            if (chatContainer.classList.contains('visible')) {
-                chatToggleBtn.style.display = 'none';
-                userInput.focus();
-            } else {
-                chatToggleBtn.style.display = 'flex';
-            }
-        }
-
-        function sendQuickMessage(message) {
-            if (!isTyping) {
-                userInput.value = message;
-                sendMessage();
-            }
-        }
-
-        async function sendMessage() {
-            const message = userInput.value.trim();
-            if (!message || isTyping) return;
-
-            addMessage(message, 'user');
-            userInput.value = '';
-            userInput.focus();
-            showTypingIndicator();
-
-            try {
-                const response = await fetch('/chat', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ 
-                        message: message,
-                        threadId: currentThreadId
-                    }),
-                });
-
-                const data = await response.json();
-                if (data.error) {
-                    throw new Error(data.error);
-                }
-
-                // Actualizar thread ID solo si no tenemos uno
-                if (!currentThreadId) {
-                    setStoredThreadId(data.threadId);
-                }
-
-                await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 1000));
-                addMessage(data.message, 'bot');
-            } catch (error) {
-                addMessage('Sorry, there was an error processing your request.', 'bot');
-                console.error('Error:', error);
-            } finally {
-                hideTypingIndicator();
-            }
-        }
-
-        function addMessage(message, sender) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message', `${sender}-message`);
-            
-            if (sender === 'bot') {
-                const icon = document.createElement('i');
-                icon.classList.add('fas', 'fa-robot');
-                icon.style.marginRight = '8px';
-                messageDiv.appendChild(icon);
-            }
-            
-            const textSpan = document.createElement('span');
-            textSpan.textContent = message;
-            messageDiv.appendChild(textSpan);
-            
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-    </script>
 </body>
 </html>

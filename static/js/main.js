@@ -82,24 +82,36 @@ function sendQuickMessage(message) {
 function addMessageToChat(text, isUser) {
     const messagesContainer = document.getElementById('chat-messages');
     const messageDiv = document.createElement('div');
-    messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
-    messageDiv.textContent = text;
-    
+    messageDiv.className = isUser ? 'message user-message' : 'message assistant-message';
+    messageDiv.innerHTML = `<div class="message-content">${text}</div>`;
     messagesContainer.appendChild(messageDiv);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    scrollToBottom();
     
-    // Update conversation history
+    // Actualizar historial
     updateConversationHistory(text, isUser);
 }
 
+function scrollToBottom() {
+    const messagesContainer = document.getElementById('chat-messages');
+    messagesContainer.scrollTo({
+        top: messagesContainer.scrollHeight,
+        behavior: 'smooth'
+    });
+}
+
 function showTypingIndicator() {
+    const messagesContainer = document.getElementById('chat-messages');
     const indicator = document.getElementById('typing-indicator');
-    indicator.classList.add('visible');
+    
+    // Mover el indicador dentro del contenedor de mensajes
+    messagesContainer.appendChild(indicator);
+    indicator.style.display = 'flex';
+    scrollToBottom();
 }
 
 function hideTypingIndicator() {
     const indicator = document.getElementById('typing-indicator');
-    indicator.classList.remove('visible');
+    indicator.style.display = 'none';
 }
 
 // Conversation management

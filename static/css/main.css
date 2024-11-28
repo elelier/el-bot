@@ -1,3 +1,8 @@
+/* Import component styles */
+@import url('../css/components/chat-modal.css');
+@import url('../css/components/chat-button.css');
+@import url('../css/components/chat-options.css');
+
 /* Variables */
 :root {
     --primary-color: #007bff;
@@ -23,8 +28,3 @@ body {
     color: var(--text-color);
     background-color: var(--background-color);
 }
-
-/* Import component styles */
-@import url('components/chat-modal.css');
-@import url('components/chat-button.css');
-@import url('components/chat-options.css');
