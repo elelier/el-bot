@@ -1,0 +1,21 @@
+{
+  "nombre": "EL Bot - AI Assistant",
+  "version": "1.0.0",
+  "descripcion": "Un chatbot moderno y responsivo impulsado por inteligencia artificial, diseñado con Flask y la API GPT-3.5 de OpenAI. Proporciona una interfaz interactiva para responder preguntas y ofrecer información en tiempo real.",
+  "tecnologias": [
+    "Python",
+    "Flask",
+    "OpenAI API",
+    "JavaScript"
+  ],
+  "caracteristicas": [
+    "Interfaz de chat en tiempo real",
+    "Diseño responsivo y moderno",
+    "Preservación del contexto de la conversación",
+    "Historial de conversación local",
+    "Indicadores de escritura en tiempo real"
+  ],
+  "link": "https://github.com/elelier/el-bot", 
+  "link_u": "Ver en GitHub",
+  "banner": "elBotBanner"
+}

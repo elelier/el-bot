@@ -1,38 +1,38 @@
-# EL Bot - AI Assistant
+# EL Bot - Asistente AI
 
-EL Bot is a modern, responsive AI-powered chatbot built with Flask and OpenAI's GPT-3.5 API. It provides an interactive interface for users to engage with an AI assistant that can answer questions and provide information about various topics.
+EL Bot es un chatbot moderno y responsivo impulsado por inteligencia artificial, construido con Flask y la API GPT-3.5 de OpenAI. Proporciona una interfaz interactiva para que los usuarios interactúen con un asistente AI que puede responder preguntas y proporcionar información sobre diversos temas.
 
 ![Python](https://img.shields.io/badge/python-3.11-blue.svg)
 ![Flask](https://img.shields.io/badge/flask-2.3.3-green.svg)
 ![OpenAI](https://img.shields.io/badge/openai-0.27.8-orange.svg)
 
-## Features
+## Características
 
-- 💬 Real-time chat interface
-- 🤖 Powered by OpenAI's GPT-3.5
-- 📱 Responsive design
-- 🔄 Conversation context preservation
-- 🚀 Quick action buttons
-- 💾 Local conversation history
-- ⚡ Typing indicators
-- 🎨 Modern UI/UX
+- 💬 Interfaz de chat en tiempo real
+- 🤖 Impulsado por GPT-3.5 de OpenAI
+- 📱 Diseño responsivo
+- 🔄 Preservación del contexto de la conversación
+- 🚀 Botones de acción rápida
+- 💾 Historial de conversación local
+- ⚡ Indicadores de escritura
+- 🎨 UI/UX moderna
 
-## Prerequisites
+## Requisitos
 
-Before you begin, ensure you have met the following requirements:
-- Python 3.11 or higher
-- OpenAI API key
-- Modern web browser
+Antes de comenzar, asegúrate de haber cumplido con los siguientes requisitos:
+- Python 3.11 o superior
+- Clave de API de OpenAI
+- Navegador web moderno
 
-## Installation
+## Instalación
 
-1. Clone the repository:
+1. Clona el repositorio:
 ```bash
 git clone https://github.com/yourusername/el-bot.git
 cd el-bot
 ```
 
-2. Create and activate a virtual environment:
+2. Crea y activa un entorno virtual:
 ```bash
 # Windows
 python -m venv venv
@@ -43,123 +43,123 @@ python -m venv venv
 source venv/bin/activate
 ```
 
-3. Install dependencies:
+3. Instala las dependencias:
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Create a `.env` file in the root directory:
+4. Crea un archivo `.env` en el directorio raíz:
 ```bash
 cp .env.example .env
 ```
 
-5. Edit `.env` and add your OpenAI API key:
+5. Edita `.env` y agrega tu clave de API de OpenAI:
 ```
-OPENAI_API_KEY=your-api-key-here
-SECRET_KEY=your-secret-key-here
+OPENAI_API_KEY=tu-clave-de-api-aqui
+SECRET_KEY=tu-clave-secreta-aqui
 ```
 
-## Usage
+## Uso
 
-1. Start the development server:
+1. Inicia el servidor de desarrollo:
 ```bash
 python run.py
 ```
 
-2. Open your web browser and navigate to:
+2. Abre tu navegador web y navega a:
 ```
 http://localhost:5000
 ```
 
-3. Click the chat button in the bottom right corner to start interacting with EL Bot.
+3. Haz clic en el botón de chat en la esquina inferior derecha para comenzar a interactuar con EL Bot.
 
-## Project Structure
+## Estructura del Proyecto
 
 ```
 project_root/
-├── app/                    # Application package
-│   ├── __init__.py        # Flask app initialization
-│   ├── routes.py          # API endpoints
-│   ├── config.py          # Configuration
-│   └── utils/             # Utilities
-│       └── chat_utils.py  # Chat helper functions
-├── static/                # Static files
-│   ├── css/              # Stylesheets
+├── app/                    # Paquete de la aplicación
+│   ├── __init__.py        # Inicialización de la app Flask
+│   ├── routes.py          # Puntos finales de la API
+│   ├── config.py          # Configuración
+│   └── utils/             # Utilidades
+│       └── chat_utils.py  # Funciones auxiliares de chat
+├── static/                # Archivos estáticos
+│   ├── css/              # Hojas de estilo
 │   │   ├── main.css
-│   │   └── components/   # Component styles
+│   │   └── components/   # Estilos de componentes
 │   └── js/               # JavaScript
 │       └── main.js
-├── templates/            # HTML templates
+├── templates/            # Plantillas HTML
 │   └── index.html
-├── .env.example         # Environment variables template
-├── .gitignore          # Git ignore rules
-├── requirements.txt    # Python dependencies
-└── run.py             # Application entry point
+├── .env.example         # Plantilla de variables de entorno
+├── .gitignore          # Reglas de ignorar para Git
+├── requirements.txt    # Dependencias de Python
+└── run.py             # Punto de entrada de la aplicación
 ```
 
-## API Endpoints
+## Puntos finales de la API
 
-- `GET /`: Serves the main chat interface
-- `POST /chat`: Handles chat messages
-  - Request body:
+- `GET /`: Sirve la interfaz principal de chat
+- `POST /chat`: Maneja los mensajes de chat
+  - Cuerpo de la solicitud:
     ```json
     {
-        "message": "User message",
-        "thread_id": "conversation_thread_id",
+        "message": "Mensaje del usuario",
+        "thread_id": "id_del_hilo_de_conversacion",
         "conversation_history": []
     }
     ```
-  - Response:
+  - Respuesta:
     ```json
     {
-        "message": "Bot response",
-        "thread_id": "conversation_thread_id"
+        "message": "Respuesta del bot",
+        "thread_id": "id_del_hilo_de_conversacion"
     }
     ```
 
-## Configuration
+## Configuración
 
-The application can be configured through environment variables:
+La aplicación se puede configurar a través de variables de entorno:
 
-- `OPENAI_API_KEY`: Your OpenAI API key
-- `SECRET_KEY`: Flask secret key for session management
-- `MAX_CONVERSATION_LENGTH`: Maximum number of messages to retain (default: 20)
-- `CONTEXT_WINDOW_SIZE`: Number of previous messages to include for context (default: 10)
+- `OPENAI_API_KEY`: Tu clave de API de OpenAI
+- `SECRET_KEY`: Clave secreta de Flask para la gestión de sesiones
+- `MAX_CONVERSATION_LENGTH`: Número máximo de mensajes a retener (predeterminado: 20)
+- `CONTEXT_WINDOW_SIZE`: Número de mensajes anteriores a incluir para el contexto (predeterminado: 10)
 
-## Development
+## Desarrollo
 
-To contribute to the project:
+Para contribuir al proyecto:
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests (if available)
-5. Submit a pull request
+1. Haz un fork del repositorio
+2. Crea una rama de características
+3. Realiza tus cambios
+4. Ejecuta pruebas (si están disponibles)
+5. Envía una solicitud de extracción
 
-## Security Considerations
+## Consideraciones de Seguridad
 
-- API keys are stored in environment variables
-- Conversation history is limited to prevent memory issues
-- No sensitive data is stored permanently
-- HTTPS is recommended for production deployment
+- Las claves de API se almacenan en variables de entorno
+- El historial de conversación está limitado para evitar problemas de memoria
+- No se almacenan permanentemente datos sensibles
+- Se recomienda HTTPS para el despliegue en producción
 
-## Browser Support
+## Soporte del Navegador
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+- Chrome (última versión)
+- Firefox (última versión)
+- Safari (última versión)
+- Edge (última versión)
 
-## License
+## Licencia
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo LICENSE para más detalles.
 
-## Contact
+## Contacto
 
-If you have any questions or feedback, please reach out to [your contact information].
+Si tienes alguna pregunta o comentario, por favor contáctanos a [tu información de contacto].
 
-## Acknowledgments
+## Agradecimientos
 
-- OpenAI for their powerful GPT-3.5 API
-- Flask team for the excellent web framework
-- Font Awesome for the icons
+- OpenAI por su poderosa API GPT-3.5
+- Equipo de Flask por el excelente marco web
+- Font Awesome por los íconos
