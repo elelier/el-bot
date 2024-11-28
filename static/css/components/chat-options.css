@@ -1,0 +1,30 @@
+.chat-options {
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+.chat-option-button {
+    background: none;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.chat-option-button:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.chat-option-button i {
+    font-size: 1rem;
+}
